@@ -1,0 +1,45 @@
+{
+  "DE-001_valid_german_19pct.pdf": {
+    "scenario": "German domestic invoice",
+    "expected": "Arithmetic consistent; check applicable invoice fields",
+    "key_amounts": {
+      "net": "200.00",
+      "vat": "38.00",
+      "gross": "238.00"
+    }
+  },
+  "DE-002_incorrect_vat_math.pdf": {
+    "scenario": "Incorrect VAT arithmetic",
+    "expected": "Flag arithmetic discrepancy: 19% of 1000 is 190, not 180",
+    "key_amounts": {
+      "net": "1000.00",
+      "vat_stated": "180.00",
+      "vat_expected": "190.00",
+      "gross_stated": "1180.00"
+    }
+  },
+  "IN-001_indian_gst_cgst_sgst.pdf": {
+    "scenario": "Indian intra-state GST",
+    "expected": "Extract GSTIN and CGST/SGST; structural check only"
+  },
+  "IN-DE-001_india_to_germany_services.pdf": {
+    "scenario": "India to Germany B2B services",
+    "expected": "Cross-border advisor review; do not auto-conclude reverse charge"
+  },
+  "DE-003_reverse_charge_service.pdf": {
+    "scenario": "Reverse charge wording",
+    "expected": "Detect wording; verify statutory applicability"
+  },
+  "DE-004_missing_invoice_fields.pdf": {
+    "scenario": "Missing invoice details",
+    "expected": "Flag missing invoice number, supplier address and tax identifier subject to applicable exceptions"
+  },
+  "IN-002_indian_gst_igst.pdf": {
+    "scenario": "Indian inter-state GST",
+    "expected": "Extract IGST and GSTIN fields"
+  },
+  "DE-005_credit_note.pdf": {
+    "scenario": "Credit note",
+    "expected": "Recognize credit note and negative amounts"
+  }
+}

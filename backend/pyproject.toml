@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "invoiceiq-api"
+version = "0.3.0"
+description = "InvoiceIQ invoice intelligence API"
+requires-python = ">=3.11"
+dependencies = [
+  "alembic>=1.13,<2",
+  "fastapi>=0.115,<1",
+  "httpx>=0.27,<1",
+  "lxml>=5.3,<7",
+  "pymupdf>=1.24,<2",
+  "psycopg[binary]>=3.2,<4",
+  "pydantic-settings>=2.6,<3",
+  "python-multipart>=0.0.18,<1",
+  "sqlalchemy>=2.0,<3",
+  "uvicorn[standard]>=0.32,<1",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8.3,<9",
+]
+# PaddleOCR for scanned PDFs (large download; Tesseract via PyMuPDF is used as a fallback if installed).
+ocr = [
+  "paddlepaddle>=3.3,<4",
+  "paddleocr>=3,<4",
+]
+# Optional LLM-assisted extraction (LLM_PROVIDER=anthropic + ANTHROPIC_API_KEY).
+llm = [
+  "anthropic>=1,<2",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
